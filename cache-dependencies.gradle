@@ -1,0 +1,34 @@
+// Script to help cache all dependencies
+// Run with: gradle -b cache-dependencies.gradle cacheDeps
+
+configurations {
+    cacheConfig
+}
+
+dependencies {
+    cacheConfig 'ch.qos.logback:logback-classic:1.5.20'
+    cacheConfig 'com.github.cliftonlabs:json-simple:4.0.1'
+    cacheConfig 'com.formdev:flatlaf:3.6.2'
+    cacheConfig 'de.sciss:syntaxpane:1.3.0'
+    cacheConfig 'info.picocli:picocli:4.7.7'
+    cacheConfig 'info.picocli:picocli-codegen:4.7.7'
+    cacheConfig 'org.jdom:jdom2:2.0.6.1'
+    cacheConfig 'org.jfree:jfreechart:1.5.6'
+    cacheConfig 'org.openjdk.nashorn:nashorn-core:15.7'
+    cacheConfig 'org.slf4j:slf4j-api:2.0.17'
+    cacheConfig 'org.swinglabs.swingx:swingx-autocomplete:1.6.5-1'
+    cacheConfig 'com.google.errorprone:error_prone_core:2.40.0'
+    cacheConfig 'org.junit.jupiter:junit-jupiter-api:6.0.1'
+    cacheConfig 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+task cacheDeps {
+    doLast {
+        configurations.cacheConfig.files
+        println "All dependencies cached to ~/.gradle/caches/"
+    }
+}
